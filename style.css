@@ -42,12 +42,29 @@ header {
   padding: 30px 40px;
 }
 
+.card-header ul  {
+  padding: 0%;
+}
+
+
+.card-header ul input {
+  width: 20%;
+}
+
+
 .card-header::after {
   content: " ";
   display: block;
   width: 100%;
   background: #e7e9eb;
-  height: 2px;
+  height: 1px;
+}
+
+.card-header div{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .card-body {
