@@ -16,10 +16,15 @@ function writePassword() {
     SpecialChar_array = "~!@#$%^&*()_+=-`:><?/";
     Number_array = "0123456789";
     var password_array = "";
+    var newpassword = "";
+    if (length < 8 || length > 128)
+    {
+      alert("password can only be between 8 to 128");
+      return;
+    }
     if (document.getElementById("Uppercase").checked)
     {
       password_array=password_array.concat(Uppercase_array);
-      
     }
     if (document.getElementById("Lowercase").checked)
     {
@@ -33,16 +38,25 @@ function writePassword() {
     {
       password_array=password_array.concat(SpecialChar_array);
     }
+    // if no password attribute is checked it will alert user
+    if (document.getElementById("SpecialChar").checked == false && document.getElementById("Uppercase").checked == false 
+    && document.getElementById("Lowercase").checked == false && document.getElementById("Number").checked == false)
+    {
+      alert("need check at least one option");
+      return;
+    }
     // valid password input array
     // var    passwordarray = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~!@#$%^&*()_+=-`:><?/",
-      var newpassword = "";
+    
     //  n is the valid password input array length, it will fullfill from position 0
     // to the length equal the random generated password length
     for (var i = 0, n = password_array.length; i < length; ++i) {
     // newpassword will fill a random character in the 'passwordarray' array, for
     // each position in the newpassword, untill it full it's length
       newpassword += password_array.charAt(Math.floor(Math.random() * n));
-    }
+      
+  }
+    
     return newpassword;
 }
   passwordText.value = password;
@@ -51,3 +65,5 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+
